@@ -9,8 +9,10 @@ def your_menu(foods):
             index += 1
     
         selected_choice = int(input("Your order number? "))
+        if selected_choice < 1 or selected_choice > len(foods) :
+            raise ValueError
         select_dish(foods, selected_choice - 1)
-    except IndexError as error:
+    except (IndexError, ValueError) as error:
         print(f"{error} was entered.")
         print("Next time try entering something on the menu!")
 
